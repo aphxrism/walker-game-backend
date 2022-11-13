@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, BadRequestException } from '@nestjs/common';
 import { OperationResult } from 'src/interfaces/operation.result.interface';
 import { Player } from './interfaces/player.interface';
 import { PlayersService } from './players.service';
@@ -8,7 +8,7 @@ export class PlayersController {
     constructor(private readonly playersService: PlayersService) {}
 
     private validateIncoming (body: any): Player {
-      if (!body.id) throw new Error('Player\'s ID is not defined');
+      if (!body.id) throw new BadRequestException('Player\'s ID is not defined');
 
       return body;
     }
