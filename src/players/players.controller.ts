@@ -3,8 +3,8 @@ import { OperationResult } from 'src/interfaces/operation.result.interface';
 import { Player } from './interfaces/player.interface';
 import { PlayersService } from './players.service';
 
-@Controller()
-export class AppController {
+@Controller('/players')
+export class PlayersController {
     constructor(private readonly playersService: PlayersService) {}
 
     private validateIncoming (body: any): Player {
